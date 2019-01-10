@@ -1,0 +1,14 @@
+Help(dir)  #查看手册
+Dir(__builtins__) #查看内置函数
+ 
+str = r'C:\Program Files\FishC\Good''\\'   #R或r原始数据，末尾不能加\，如非要加，则使用转义\\
+file1 = open(r'C:\windows\temp\readme.txt', 'r')
+ 
+Random.randint(1,10) #产生1-10直接的随机数
+ 
+int(10.1+0.5)  #默认int是向下取整，如果采用四舍五入+0.5即可
+优先级
+幂运算特殊
+-3**2=-9
+3**-2=0.1111
+Not > and > or
