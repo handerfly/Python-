@@ -1,4 +1,6 @@
-In the words of Abraham Lincoln:
+#查看帮助
+
+
 
 > Pardon my French
 Some basic Git commands are:
