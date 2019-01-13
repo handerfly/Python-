@@ -6,3 +6,6 @@
 4. Tkinter
 
 https://blog.csdn.net/shangboerds/article/details/69215245
+
+
+https://github.com/maicss/PyQt5-Chinese-tutorial.git
