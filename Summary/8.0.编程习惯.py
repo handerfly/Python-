@@ -93,65 +93,25 @@ Python编程习惯
     Comments = Why (rationale) & how code works
     注释 = 代码为什么要这样写，如何工作
 
-    Docstrings explain how to use code, and are for the users of your code.
-    文档说明用来解释代码是如何工作的，是写给读代码的人看的。
-    Uses of docstrings:
+
+    文档说明用来解释代码是如何工作的，是写给使用代码的的人看的。
     文档说明的作用：
-    - Explain the purpose of the fuction even if it seems obvious to you, because it might not be
     - 解释函数的功能，即使它看起来对你显而易见，但它对后来看你的代码的人来说未必显而易见。
-    - obvious to someone else later on.
-    - Describe the parameters expected, the return values, and any exceptions raised.
     - 描述期望的参数，返回值和任何可能出现的异常
-    - If the method is tightly coupled with a single caller, make some mention of the caller.
     - 如果这个方法与调用者紧密相关，有必要提一下调用者
-    - (Though be careful that the caller might be changed later)
     - 但要注意调用者后面可能会改变
-    - Comments explain why, and are for the maintainers of your code. Examples include notes to yourself, like:
+
     - 注释是为了维护代码而写的，它解释了为什么要这样做。例如写一些note来提醒一下自己。
 
     # !!! BUG: ...
     # !!! FIX: This is a hack
     # ??? Why is this here?
 
-    Both of these groups include you, so write good docstrings and comments!
-    所有的这些都与你相关，所以写好文档说明和注释
-    Docstrings are useful in interactive use (help()) and for auto-documentation systems.
-    文档说明在使用交互式help命令时有用，也可以用来自动生成文档。
 
-    False comments & docstrings are worse than none at all.
     不正确的注释和文档说明比没有还要糟糕。
-    So keep them up to date!
     所以要让它们保持最新
-    When you make changes, make sure the comments & docstrings are consisitent with the code,
     当你改代码的时候，把注释和文档说明也要一起更新
-    and don’t contradict it.
-    不能让它们自相矛盾。
 
-
-
-实用性高于纯粹性 Practicality Beats Purity
-
-    There are always exceptions. From PEP 8:
-    事情总有例外，从PEP 8:
-
-    But most importantly: know when to be inconsistent - sometimes the style guide just doesn’t apply.
-    最重要的是：知道什么时候不再保持一致性 – 有时候规范指导并不有效。
-    When in doubt, use your best judgement. Look at other examples and decide what looks best.
-    当你有所怀疑的时候，尝试做尽可能好的决定。参考其它的例子来决定怎么做最好。
-    And don’t hesitate to ask!
-    有问题不要犹豫
-    Two good reasons to break a particular rule:
-    两个打破特殊规则的理由：
-    1. When applying the rule would make the code less readable,
-    当使用该规则会让代码变得难以理解，
-    even for someone who is used to reading code that follows the rules.
-    即使是对于那些熟知规则的人来说也是这样。
-    2. To be consisitent with surrouding code that also breaks it (maybe for historic reasons)
-    （也许是历史原因）与周围的代码一致也不符合规则
-    – although this is also an opportunity to clean up someone else’s mess.
-    尽管这是一个清理他人烂摊子的好机会。
-    … But practicality shouldn’t beat purity to a pulp!
-    但也不能因为实用就把代码变成一坨屎.
 
 
 Swap Values (值互换)
@@ -165,22 +125,14 @@ Swap Values (值互换)
     In python: 如果用Python
 
         b, a = a, b
-
-    Perhaps you’ve seen this before. But do you know how it works?
-    也许你曾经看到过这种用法。但你知道它的原理么？
-    - The comma is the tuple constructor syntax.
+原理
     - 逗号是tuple的构造语法
-    - A tuple is created on the right (tuple packing)
-    - 在等号的右边，一个tuple被创建了
-    - A tuple is the target on the left (tuple unpacking)
-    - 左边也会生成一个tuple
-    The right-hand side is unpacked into the names in the tuple on the left-hand side.
     右边的tuple会被分解到以左边名字命名的tuple中。
 
     Further examples of unpacking:
 
-        >>> l = ['David', 'Pythonista', '+1-514-555-1234']
-        >>> name, title, phone = l
+        >>> L = ['David', 'Pythonista', '+1-514-555-1234']
+        >>> name, title, phone = L
         >>> name
         'David'
         >>> title
@@ -189,18 +141,16 @@ Swap Values (值互换)
         '+1-514-555-1234'
 
     Useful in loops over structured data:
-    l above is the list we just made (David’s info). So people is a list containing two items,
-    l是我们上面刚建好的列表。people是一个包含两个成员的列表，每个成员又是一个3个成员的列表。
-    each a 3-item list.
+    L是我们上面刚建好的列表。
+   
 
-        >>> people = [l, ['guido, 'BDFL', 'unlisted']]
+        >>> people = [L, ['guido, 'BDFL', 'unlisted']]
         >>> for (name, title, phone) in people:
         ...     print name, phone
         ...
         'David', '+1-514-555-1234'
         'Guido', 'unlisted'
 
-    Each item in people is being unpacked into the (name, title, phone) tuple.
     每一个people中的成员都会被分解到(name, title, phone)的tuple中。
     Arbitrarily nestable (just be sure to match the structure on the left & right!):
     支持嵌套
@@ -216,54 +166,40 @@ Swap Values (值互换)
         ['David', 'Pythonista', '+1-514-555-1234']
 
 
-关于Tuple， More About Tuples
+More About Tuples
 
-    We saw that the comma is the tuple constructor, not the parentheses. Example:
     逗号是tuple的构造器，而不是括号。例如：
 
         >>> 1,
         (1,)
 
-    The Python interpreter shows the parentheses for clarity, and I recommend you use parentheses too:
     为了清晰地显示，python解释器会显示括号，所以我也推荐你使用括号
 
         >>> (1, )
         (1,)
 
-    Don’t forget the comma!
     但不要忘了逗号！
 
         >>> (1)
         1
 
-    In a one-tuple, the trailing comma is required; in 2+-tuples, the trailing comma is optional.
     在只有一个成员的tuple中，末尾的逗号是必须的，在含两个以上成员的tuple中，末尾的逗号是可选的。
-    In 0-tuples, or empty tuples, a pair of parentheses is the shortcut syntax:
+ 
     在空的tuple中，括号是最简单的表达方式。
 
-        >>> ()
-        ()
+     >>> a=()
+		  
+     >>> type(a)
+		  
+	<class 'tuple'>
         >>> tuple()
         ()
-
-    A common typo is to leave a comma even though you don’t want a tuple. It can be easy to miss in your code.
-    常见的错误是在你不想要tuple的地方留下了一个逗号。这样的情况在代码中很容易发生
-
-        >>> value = 1,
-        >>> value
-        (1,)
-
-    So if you see a tuple where you don’t expect one, look for a comma!
-    所以如果你在一个意想不到的地方看到了tuple, 那就查一下是不是有不该有的逗号吧！
 
 
 用在交互窗口使用的”” Interactive “”
 
-    This is a really useful feature that surprisingly few people know.
     这是一个非常有用但又很少人知道的功能
-    In the interactive interpreter, whenever you evaluate an expression or call a function,
     在交互式命令行中，无论你是执行一条语句还是调用一个函数，
-    the result is bound to a temporary name, _(underscore).
     返回的结果都有一个临时的名字, ‘_’(下划线)
 
         >>> 1 + 1
@@ -271,15 +207,11 @@ Swap Values (值互换)
         >>> _
         2
 
-    _ stores the last printed expression.
     _ 保存了上一次被打印的表达式的值。
-    When a result is None, nothing is printed, so _ doesn’t change. That’s convinenient!
     当结果是 None 时，没有值被打印，所以_也不会变，这非常地方便。
-    This only works in the interactive interpreter, not within a modoule.
+
     这个只有在交互式命令行中有效，在模块中无效。
-    It is especially useful when you’re working out a problem interactively,
     这个在命令行中求解问题时，当你刚算出一个结果
-    and you want to store the result for a later step.
     又想要在下一步中使用这个结果时很有用。
 
         >>> import math
@@ -292,70 +224,52 @@ Swap Values (值互换)
         0.50000000000000011
 
 
-用子串构建字符串 Building Strings from Substrings
+用子串构建字符串 
 
-    Start with a list of strings:
     让我们从一个字符串队列开始：
 
-        colors = ['red', 'blue', 'green', 'yellow']
+        co
 
-    We want to join all the strings together into one large string.
     我们想要把所有的字符串连接起来组成一个大的字符串
-    Especially when the number of substrings is large…
     尤其是在列表很大的时候：
-    Don’t do this:
     不要这样做
 
         result = ''
         for s in colors:
             result += s
 
-    This is very inefficient.
     这非常得不高效
-    It has terrible memory usage and performance patterns. The ‘summation” will compute,
     这样做会占用很大的内存和运算资源。对其做加法需要运算，保存和销毁很多中间的变量。
-    store, and then throw away each intermediate step.
 
-    Instead, do this:
     而应该这样做：
 
         result = ''.join(colors)
 
-    When you are only dealing with a few dozen or hundred strings, it won’t make much difference.
     当你只是处理几十个或者是几百个字符串的时候，这并没有太大的区别。
-    But get in the habit of building strings efficiently, because with thousands or with loops, it will make a difference.
     但是要养成高效的习惯，因为当有成千上万的字符串的时候，差别就显现出来了。
 
 
-构建字符串 Building Strings, Variations 1
+构建字符串 
 
-    Here are some techniques to use the join() string method.
     下面是一些使用join()字符串方法的技巧
-    If you want spaces between your substrings:
     如果你想要用空格来连接子字符串
 
         result = ' '.join(colors)
 
-    Or commas and spaces:
     或者是逗号加空格
 
         result = ', '.join(colors)
 
-    Here’s a common case:
     这里是一个常见的例子。
 
         colors = ['red', 'blue', 'green', 'yellow']
         print 'Choose', ', '.join(colors[:-1]), \
         'or', colors[-1]
 
-    To make a nicely grammatical sentence, we want commas between all but the last pair of values,
     为了生成一个符合语法的句子，我们想要在除了最后一组单词之间插入空格
-    where we want the word ‘or’. The slice syntax does the job.
     在最后一组单词中放入’or’关键词。使用分割语法可以做到这一点。
-    The “slice until -1”([:-1]) gives all but the last value, which we join with comma-space.
     “slice until -1” ([:-1]) 可以帮助你在用逗号和空格连接时提供除了最后一组外的所有单词。
 
-    Of course, this code wouldn’t work with corner cases, lists of length 0 or 1.
     当然，上面的代码无法应对一些特殊情况，如列表的长度为0或者为1的时候。
 
     Output:
@@ -363,17 +277,14 @@ Swap Values (值互换)
         Choose red, blue, green or yellow
 
 
-构建字符串 Building Strings, Variations 2
+构建字符串
 
-    If you need to apply a function to generate the substrings:
     如查你想要先通过函数来生成子字符串：
 
         result = ''.join(fn(i) for i in items)
 
-    This involves a generator expression, which we’ll cover later.
     这个涉及到生成器表达式，我们在后面会讨论这个。
 
-    If you need to compute the substrings incrementally, accumulate them in a list first:
     如果你想要处理的子字符串在动态地增加，那么先把它们增加到一个列表里面
 
         items = []
@@ -383,46 +294,29 @@ Swap Values (值互换)
         # items is now complete
         result = ''.join(fn(i) for i in items)
 
-    We accumulate the parts in a list so that we can apply the join string method, for efficiency.
     只有把它们放到列表里面，我们才能使用join方法来提高效率。
 
 
-尽可能的用关键字 “in” Use in where possible (1)
+尽可能的用关键字 “in”
 
     Good:
 
         for key in d:
             print key
 
-    in is generally faster
     in 通常会更快
-    This pattern also works for items in arbitrary containers(such as lists, tuples, and sets)
     这个模式对于其它的一些容器也适用，如lists, tuples, sets
-    in is also an operator (as we’ll see)
     in 也是一个操作符
     Bad:
 
         for key in d.keys():
             print key
 
-    This is limited to objects with a keys() method.
-    这样写就只能用于带keys()方法的对象
+   这样写就只能用于带keys()方法的对象
 
 
-尽可能的用”in”(2) Use in where possible （2）
+尽可能的用”in”(2) 
 
-    But .keys() is necessary when mutating the dictionary:
-    但是当试图改变字典时，.keys()还是必要的
-
-        for key in d.keys():
-            d[str(key)] = d[key]
-
-    d.keys() creates a static list of the dictionary keys. Otherwise, you’ll get an expression
-    d.keys() 会创建一个由所有keys组成的静态的列表。否则，你会得到以下错误：
-    “RuntimeError: dictionary changed size during iteration”.
-    “运行时错误，字典的大小在遍历时发生变化”
-
-    For consistency, use key in dict, not dict.has_key():
     为了一致性，使用key in dict, 而不是dict.has_key（）：
 
         # do this
@@ -434,11 +328,9 @@ Swap Values (值互换)
             do something with d[key]
 
 
-字典的get方法 Dictionary get Method
+字典的get方法
 
-    We often has to initialize dictionary entries before use:
     我们在使用字典之前通常都要初始化一下
-    This is a naive way to do it:
     以下是很弱智的做法：
 
         navs = {}
@@ -447,7 +339,6 @@ Swap Values (值互换)
                 navs[portfolio] = 0
             navs[portfolio] += position * prices[equity]
 
-    dict.get(key, default) removes the need for the test:
     dict.get(key, default) 可以省掉这样的测试语句。
 
         navs = {}
@@ -455,15 +346,12 @@ Swap Values (值互换)
             navs[portfolio] = (navs.get(portfolio, 0)
                                 + position * prices[equity]
 
-    Much more direct。
     这样更直接
 
 
-字典中的”setdefault”方法（1） Dictionary setdefault Method (1)
+字典中的”setdefault”方法（1） 
 
-    Here we have to initialize mutable dictionary values. Each dictionary value will be a list.
     在这里我们要对一个字典初始化为不同成员，每个成员都是一个列表。
-    Initializing mutable dictionary values:
 
         equities = {}
         for (portfolio, equity) in data:
@@ -472,40 +360,30 @@ Swap Values (值互换)
             else:
                 equities[portfolio] = [equity]
 
-    dict.setdefault(key, default) does the job much more efficiently
     dict.setdefault(key, default) 可以更高效地实现这一点
 
         equities = {}
         for (portfolio, equity) in data:
             equities.setdefault(portfolio, []).append(equity)
 
-    dict.setdefault() is equivalent to “get, or set & get”. Or “set if necessary, then get”.
     dict.setdefault() 相当于 “get, or set & get”. 或者 “set if necessary, then get”.
-    It’s especially efficient if your dictionary key is expensive to compute or long to type.
     它在你的字典key很难算出来或者是很长不好拼写的时候很高效。
-    The only problem with dict.setdefault() is that the default value is always evaluated, whether needed or not.
     dict.setdefault()唯一的问题就是永运会计算默认值，不管需不需要。
-    That only matters if the default value is expensive to compute.
     这只有在计算默认值开销很大的时候才值得担心。
-    If the default value is expensive to compute, you may want to use the defaultdict class, which we’ll cover shortly.
     如果默认值的计算开销真的很大，你可以考虑defaultdict类，这我们很快会讲到。
 
 
 字典中的“setdefault”方法（2） Dictionary setdefault Method (2)
 
-    Here we see that the setdefault dictionary method can also be used as a stand-alone statement:
-    在这里我们可以看到setdefault字典方法可以被作为一个标准的表达式出现。
+    在这里我们可以看到setdefault字典方法可以被作为一个标准的单独表达式出现。
 
         navs = {}
         for (portfolio, equity, position) in data:
             navs.setdefault(portfolio, 0)
             navs[portfolio] += position * prices[equity]
 
-    The setdefault dictionary method returns the default value, but we ignore it here.
     setdefault方法返回了默认值，但我们却忽略了它。
-    We’re taking advantage of setdefault’s side effect,
     我们利用了setdefault的副作用，
-    that it sets the dictionary value only if there is no value already.
     那就是只有在字典中没有这个key的时候它才会去赋值。
 
 
@@ -513,15 +391,13 @@ defaultdict
 
     New in Python 2.5
     Python 2.5中的新功能
-    defaultdict is new in Python 2.5, part of the collections module.
-    defaultdict作为collections模块的一部门，是Python 2.5中的新功能。
-    defaultdict is identical to regular dictionaries, except for two things:
+    defaultdict作为collections模块的部分，是Python 2.5中的新功能。
     defaultdict 在除了以下两点之外与通常的字典相同
     - it takes an extra first argument: a default factory function; and
     - 它多接收一个参数：一个默认值工厂函数
     - when a dictionary key is encountered for the first time, the default factory function is called and the result used to initialize the dictionary value.
     - 当字典中的key第一次出现的时候，默认值工厂函数会被调用来给这个key赋值。
-    There are two ways to get defaultdict:
+
     有两种方式来获取defaultdict
     - import the collections modoule and reference it via the module
 
@@ -560,11 +436,9 @@ defaultdict
     你必须使用”key in dict”的条件判断来检查关键字是否合法
 
 
-构建和拆分字典 Building & Splitting Dictionaries
+构建和拆分字典
 
-    Here is a useful technique to build a dictionary from two lists(or sequences):
     以下是一种使用两个列表来生成字典的有用的方法
-    one list of keys, another list of values
     一个列表作为关键字，另一个作为值。
 
         given = ['John', 'Eric', 'Terry', 'Michael']
@@ -583,25 +457,19 @@ defaultdict
         >> pythons.values()
         ['Cleese', 'Palin', 'Idle', 'Gilliam']
 
-    Note that the order of the results of keys() and values() is different from the order of items
     请注意keys()和vaules()返回值的顺序有可能和刚开始构造字典的顺序不同。
-    when constructing the dictionary. The order going in is different from the order coming out.
     进去的顺序和出来的顺序是不一致的。
-    This is because a dictionary is inherently unordered. However, the order is guaranteed to be consisitent
     这是因为字典本来是无序的，然而，只要字典在被使用的过程不被更改，字典中的成员的顺序是不会变的。
-    (in other words, the order of keys will correspond to the order of values),
-    as long as the dictionary isn’t changed between calls.
 
 
-检查真值 Testing for Truth Values
+
+检查真值
 
         # do this:      # not this:
             if x:           if x == True:
                 pass            pass
 
-    It is elegant and efficient to take advantage of the intrinsic truth values
     使用内建的真值来判断更加高效和优雅
-    (or Boolean values) of Python objects.
     Testing a list:
     测试列表是否为空
 
@@ -613,11 +481,9 @@ defaultdict
                                             pass
 
 
-真值 Truth Values
+真值 
 
-    The True and False names are build-in instances of type bool， Boolean values.
     True和False是内建的bool实例
-    Like None, there is only one instance of each.
     就如同None一样，它们都是单例
     |False |True |
     |False(==0) |True(==1) |
@@ -626,7 +492,6 @@ defaultdict
     |[], (), {}, set() |any none empty container |
     |None |almost any object taht’s not explicitly False |
 
-    Example of an object’s truth value:
     对象为真值的示例：
 
         >>> class C:
@@ -638,9 +503,7 @@ defaultdict
         >>> bool(C)
         True
 
-    To control the truth value of instances of a user-defined class,
     对于用户自定义的类的实例，为了控制其真值
-    use the nonezero or len special methods, Use len if your container which has a length.
     可以使用nonezero或者是len这个的特殊方法， 如果你的容器有长度，那就用len吧。
 
         class MyContainer(object):
@@ -651,7 +514,6 @@ defaultdict
                 ''' Return my length '''
                 return len(self.data)
 
-    If your class is not a container, use nonezero:
     如查你的类不是一个容器，那就用nonezero
 
         class MyClass(object):
@@ -662,9 +524,7 @@ defaultdict
                 ```Return my truth value (True or False)```
                 return bool(self.value)
 
-    In Python 3.0, nonezero has been renamed to bool for consistency with the bool built-in type.
     在python 3.0中，为了保持与内建类型bool的一致性, nonezero会被重名命为bool
-    For compatibility, add this to the class definition:
     为了兼容性，把下面的定义加入到类的定义中：
 
         __bool__ = __nonezero__
@@ -672,14 +532,12 @@ defaultdict
 
 索引和成员（1） Index & Item (1)
 
-    Here’s a cute way to save some typing if you need a list of words:
     在你想生成一个由单词组成的列表中的时候，如果你想要少打一点字， 下面是一种办法：
 
         >>> items = 'zero one two three'.split()
         >>> print items
         ['zero', 'one', 'two', 'three']
 
-    Say we want to interate over the items, and we need both the item’s index and the item itself:
     如果我们想要遍历所有的成员，并且得到下标和对象本身，可以使用下面的方法：
 
         i = 0
@@ -687,17 +545,11 @@ defaultdict
             print i, item           print i, items[i]
             i += 1
 
-    We need to use a list wrapper to print the result because enumerate is a lazy function:
     我们需要使用一个list关键字来将enumerate的结果转化为列表，因为这是一个比较懒的函数。
-    it generates one item, a pair, at a time, only when required.
     它只在必要的时候一次只生成一个成员或者是一对成员
-    A for loop is one place that requires one result at a time. enumerate is an example of a generator,
-    for循环是一个一次只要一个结果的地方，enumerate是一个生成器的例子,
-    which we’ll cover in greater detail later.
+    for循环是一个一次只要一个结果的地方，enumerate是一个生成器的例子
     我们会在后面详细讨论
-    print does not take one result at a time –
     print并非一次只取一个结果
-    we want the entire result, so we have to explicitly convert the generator into a list when we print it.
     我们想要所有的结果，所以我们要将生成器转化成列表，这样才能一次打出。
 
     Our loop becomes much simpler:
@@ -711,11 +563,8 @@ defaultdict
             print index, item
             index += 1
 
-    The enumerate version is much shorter and simpler than the version on the left,
     enumerate版本的代码比起左边的代码来要更简单易读，且容易理解
-    and much easier to read and understand than earlier.
 
-    An example showing how the enumerate function actually returns an iterator (a generator is a kind of iterator):
     下面的例子可以看出enumerate函数实际返回的是一个迭代器
 
         >>> enumerate(items)
@@ -737,77 +586,56 @@ defaultdict
 
 Other language have “variables”
 
-    In many other languages, assigning to a variable puts a value into a box.
     在许多其它的语言中，向一个变量赋值就像把一个值放入一个盒子中。
 
         int a = 1;
 
-    Box “a” now contains an integer 1.
     盒子”a”中现在有一个整数1.
 
-    Assigning another value to the same variable replaces the contents of the box:
     向同样的对像中赋另外一个值将会替换盒子中原来的内容
 
         int a = 2;
-
-    Now box “a” contains an integer 2.
     现在盒子”a”中放的是整数2.
 
-    Assigning one variable to another makes a copy of the value and puts it in the new box:
     将一个变量赋值给另一个，会将其值做一个拷贝然后再放入新的盒子中
 
         int b = a;
 
-    “b” is a second box, with a copy of integer 2. Box “a” has a separate copy.
     “b”就是第2个盒子，它拥有整数2的一个拷贝，与盒子”a”中的是不同的一份。
 
     Python中的名字 Python has “names”
 
-    In Python, a “name” or “identifier” is like a parcel tag (or nametag) attached to an object.
     在python中，一个名字或者是标识符更像是系在一个对象上面的标签。
 
         a = 1
 
-    Here, an integer 1 object has a tag labelled “a”.
     在这里，整数1对象有一个叫”a”的标签
-    If we reassign to “a”, we just move the tag to another object:
     如果我们对”a”重新赋值，我们只是把”a”这个标签换到了另一个对象上面
 
         a = 2
 
-    Now the name “a” is attached to an integer 2 object.
     现在整数2有了一个名叫”a”的标签
-    The original integer 1 object no longer has a tag “a”. It may live on,
     原来的整数1不再有”a”的标签，它可以继续存在，但我们不能再用标签”a”来访问它。
-    but we can’t get to it through the name “a”.
 
-    If we assign one name to another, we’re just attaching another nametag to an existing object:
     如果我们把一个变量赋值给另一个，那就会有两个标签同时指向一个对象
 
         b = a
 
-    The name “b” is just a second tag bound to the same object as “a”.
     “b”和”a”都指向了同一个对象，只是名字不同而已
 
-    Although we commonly refer to “variables” evne in Python (because it’s common terminology),
     虽然我们经常在python里面称变量，因为这是一个通用的名词
-    we really means “names” or “identifiers”. In Python, “variables” are nametags for values, not labelled boxes
     但其实我们指的是”名字”和”标示符”。在Python里面，变量只是数值的标签，而不是带标志的容器
 
-    默认参数值 Default Parameter Values
+    默认参数值
 
-    This is a common mistake that beginners often make.
     这是一个初学者常犯的错误
-    Even more advanced programmers make this mistake if they don’t understand Python names.
     如果不理解Python变量的真正含义，即使是有经验的程序员也会范这样的错误
 
         def bad_append(new_item, a_list=[]):
             a_list.append(new_item)
             return a_list
 
-    The problem here is the default value of a_list, an empty list, is evaluated at function definition time.
     这个问题在于，a_list的默认值，一个空的list, 是在函数定义的时候被定义的时候赋值的
-    So every time you call the function, you get the same default value. Try it several times:
     所以，每次调用这个函数，你都会得到同样的默认值。
 
         >>> print bad_append('one')
@@ -815,9 +643,7 @@ Other language have “variables”
         >>> print bad_append('two')
         ['one', 'two']
 
-    Lists are a mutable objects; you can change their contents. The correct way to get a default list
     列表是可变的对象，你可以修改其中的内容，正确的获取默认列表的做法是
-    (or dictionary, or set) is to create it at run time instead, inside the function:
     在函数的内部，运行时去创建它
 
         def good_append(new_item, a_list=None):
