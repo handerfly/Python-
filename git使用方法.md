@@ -65,10 +65,13 @@ git commit
 
 [![image](https://img.shields.io/badge/author-xfhy-orange.svg)](https://github.com/xfhy)
 
-图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg)
-带尺寸的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg =30x30)
-居中的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center)
-居中并且带尺寸的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center =30x30)
+![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg)
+带尺寸的图片 
+![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg =30x30)
+居中的图片 
+![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center)
+居中并且带尺寸的图片 
+![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center =30x30)
 
 
 锚点
@@ -76,7 +79,7 @@ git commit
 [标题2](##标题2) 
 [标题3](#标题3) 
 
-#表格
+# 表格
 项目     | Value
 -------- | -----
 电脑  | $1600
