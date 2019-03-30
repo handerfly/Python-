@@ -9,6 +9,8 @@
 >引用2  
 >引用2  
 
+
+
 代码引用方法1：
 ```
 git status
@@ -27,9 +29,34 @@ git commit
 + 主列表3
 * 主列表4
 
+- 项目
+  - 项目
+    - 项目
+
+1. 项目1
+2. 项目2
+3. 项目3
+
+- [ ] 计划任务
+- [x] 完成任务
+
 1. James Madison
 2. James Monroe
 3. John Quincy Adams
+<kbd>Ctrl/Command</kbd>
+`红色背景`
+*强调文本* _强调文本_
+
+**加粗文本** __加粗文本__
+
+==标记文本==
+
+~~删除文本~~
+
+> 引用文本
+
+2^10^ 运算结果是 1024.
+
 
 [表情](https://www.webfx.com/tools/emoji-cheat-sheet/)
 表情一：:+1:,表情二：:o:
@@ -38,7 +65,10 @@ git commit
 
 [![image](https://img.shields.io/badge/author-xfhy-orange.svg)](https://github.com/xfhy)
 
-
+图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg)
+带尺寸的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg =30x30)
+居中的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center)
+居中并且带尺寸的图片 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center =30x30)
 
 
 锚点
@@ -46,6 +76,20 @@ git commit
 [标题2](##标题2) 
 [标题3](#标题3) 
 
+#表格
+项目     | Value
+-------- | -----
+电脑  | $1600
+手机  | $12
+导管  | $1
+
+### 设定内容居中、居左、居右
+使用`:---------:`居中
+使用`:----------`居左
+使用`----------:`居右
+| 第一列       | 第二列         | 第三列        |
+|:-----------:| -------------:|:-------------|
+| 第一列文本居中 | 第二列文本居右  | 第三列文本居左 | 
 
 
 
