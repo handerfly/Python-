@@ -72,7 +72,7 @@ git commit
 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center)
 居中并且带尺寸的图片 
 ![Alt](https://avatar.csdn.net/7/7/B/1_ralf_hx163com.jpg#pic_center =30x30)
-<img src="https://github.com/handerfly/handerfly.github.io/blob/master/img/404-bg.jpg?raw=true" width = "100" height = "100" align=right />
+<img src="https://github.com/handerfly/handerfly.github.io/blob/master/img/404-bg.jpg?raw=true" width = "100" align=right />
 
 
 
